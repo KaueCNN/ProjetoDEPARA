@@ -1,23 +1,207 @@
-{% extends 'base2.html' %}
+{% extends 'base.html' %}
 
 {% block title %}CNN Admin - Clientes{% endblock %}
 
 {% block titulo %}
-    <h1>UNIMED - INTEGRAÇÕES</h1>
+ INTEGRAÇÕES UNIMED
 {% endblock %}
 
 
 {% block main %}
  <!-- Default Card Example -->
 
+<style>
+.pt-3-half {
+padding-top: 1.4rem;
+}
+</style>
 
+<script type="text/javascript">
+function myFunction() {
+
+  // Declare variables
+  var input = document.getElementById("myInput");
+  var filter = input.value.toUpperCase();
+  var table = document.getElementById("myTable");
+  var trs = table.tBodies[0].getElementsByTagName("tr");
+
+  // Loop through first tbody's rows
+  for (var i = 0; i < trs.length; i++) {
+
+    // define the row's cells
+    var tds = trs[i].getElementsByTagName("td");
+
+    // hide the row
+    trs[i].style.display = "none";
+
+    // loop through row cells
+    for (var i2 = 0; i2 < tds.length; i2++) {
+
+      // if there's a match
+      if (tds[i2].innerHTML.toUpperCase().indexOf(filter) > -1) {
+
+        // show the row
+        trs[i].style.display = "";
+
+        // skip to the next row
+        continue;
+
+      }
+    }
+  }
+
+}
+
+
+
+
+$('.editbtn').click(function() {
+    var $this = $(this);
+    var tds = $this.closest('tr').find('td').filter(function() {
+        return $(this).find('.editbtn').length === 0;
+    });
+    if ($this.html() === 'Edit') {
+        $this.html('Save');
+        tds.prop('contenteditable', true);
+    } else {
+        $this.html('Edit');
+        tds.prop('contenteditable', false);
+    }
+});
+
+
+
+</script>
 
     <!-- Begin Page Content -->
         <div class="container-fluid">
 
 		        <div class="card mb-4">
 
-                    ESTOU AQUI </BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR>
+                        <!-- Editable table -->
+                        <div class="card">
+                          <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Setor  <->    Centro de Custo</h3>
+                          <div class="card-body">
+                            <div id="table" class="table-editable">
+                              <span class="table-add float-right mb-3 mr-2"><a href="#!" class="text-success"><i
+                                    class="fas fa-plus fa-2x" aria-hidden="true"></i></a></span>
+                              <table class="table table-bordered table-responsive-md table-striped text-center" id="myTable">
+                                  <label><input type="search"  style="width:200%" id="myInput" onkeyup="myFunction()" class="form-control form-control-sm" placeholder="Pesquisar..." aria-controls="dtBasicExample"></label>
+                                <br>
+                                <thead>
+                                  <tr>
+                                    <th class="text-center" style="width:45%;">MV</th>
+                                    <th class="text-center" style="width:45%;">EBS</th>
+                                    <th class="text-center" style="width:5%;border-left:hidden;"></th>
+                                    <th class="text-center" style="width:5%;border-left:hidden;"></th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td class="pt-3-half" >358</td>
+                                    <td class="pt-3-half" >41661205</td>
+                                    <td>
+                                      <span class="table-remove"><button type="button"
+                                          class="btn btn-info btn-rounded btn-sm my-0">Editar</button></span>
+                                    </td>
+                                    <td>
+                                      <span class="table-remove">
+                                        <button type="button" class="btn btn-danger btn-rounded btn-sm my-0" data-toggle="modal" data-target="#modalExemplo">Excluir</button>
+                                      </span>
+                                    </td>
+                                  </tr>
+                                  <!-- This is our clonable table line -->
+                                  <tr>
+                                    <td class="pt-3-half" >352</td>
+                                    <td class="pt-3-half" >41661299</td>
+                                    <td>
+                                      <span class="table-remove"><button type="button"
+                                          class="btn btn-info btn-rounded btn-sm my-0">Editar</button></span>
+                                    </td>
+                                    <td>
+                                      <span class="table-remove">
+                                        <button type="button" class="btn btn-danger btn-rounded btn-sm my-0" data-toggle="modal" data-target="#modalExemplo">Excluir</button>
+                                      </span>
+                                    </td>
+                                  </tr>
+                                  <!-- This is our clonable table line -->
+                                  <tr>
+                                    <td class="pt-3-half" >124</td>
+                                    <td class="pt-3-half" >31661299</td>
+                                    <td>
+                                      <span class="table-remove"><button type="button"
+                                          class="btn btn-info btn-rounded btn-sm my-0">Editar</button></span>
+                                    </td>
+                                    <td>
+                                      <span class="table-remove">
+                                        <button type="button" class="btn btn-danger btn-rounded btn-sm my-0" data-toggle="modal" data-target="#modalExemplo">Excluir</button>
+                                      </span>
+                                    </td>
+                                  </tr>
+                                  <!-- This is our clonable table line -->
+                                  <tr>
+                                    <td class="pt-3-half" >258</td>
+                                    <td class="pt-3-half" >369888</td>
+                                    <td>
+                                      <span class="table-remove"><button type="button"
+                                          class="btn btn-info btn-rounded btn-sm my-0">Editar</button></span>
+                                    </td>
+                                    <td>
+                                      <span class="table-remove">
+                                        <button type="button" class="btn btn-danger btn-rounded btn-sm my-0" data-toggle="modal" data-target="#modalExemplo">Excluir</button>
+                                      </span>
+                                    </td>
+                                  </tr>
+                                  <!-- This is our clonable table line -->
+                                  <tr>
+                                    <td class="pt-3-half" >333</td>
+                                    <td class="pt-3-half" >3358796</td>
+                                    <td>
+                                      <span class="table-remove"><button type="button"
+                                          class="btn btn-info btn-rounded btn-sm my-0">Editar</button></span>
+                                    </td>
+                                    <td>
+                                      <span class="table-remove">
+                                        <button type="button" class="btn btn-danger btn-rounded btn-sm my-0" data-toggle="modal" data-target="#modalExemplo">Excluir</button>
+                                      </span>
+                                    </td>
+                                  </tr>
+                                  <!-- This is our clonable table line -->
+                                  <tr>
+                                    <td class="pt-3-half" >155</td>
+                                    <td class="pt-3-half" >78885268</td>
+                                    <td>
+                                      <span class="table-remove"><button type="button"
+                                          class="btn btn-info btn-rounded btn-sm my-0">Editar</button></span>
+                                    </td>
+                                    <td>
+                                      <span class="table-remove">
+                                        <button type="button" class="btn btn-danger btn-rounded btn-sm my-0" data-toggle="modal" data-target="#modalExemplo">Excluir</button>
+                                      </span>
+                                    </td>
+                                  </tr>
+                                  <!-- This is our clonable table line -->
+                                  <tr>
+                                    <td class="pt-3-half" >303</td>
+                                    <td class="pt-3-half" >5869526</td>
+                                    <td>
+                                      <span class="table-remove"><button type="button"
+                                          class="btn btn-info btn-rounded btn-sm my-0">Editar</button></span>
+                                    </td>
+                                    <td>
+                                      <span class="table-remove">
+                                        <button type="button" class="btn btn-danger btn-rounded btn-sm my-0" data-toggle="modal" data-target="#modalExemplo">Excluir</button>
+                                      </span>
+                                    </td>
+                                  </tr>
+
+                                </tbody>
+                              </table>
+
+                            </div>
+                          </div>
+                        </div>
+                        <!-- Editable table -->
 
                 </div>
 
@@ -26,6 +210,30 @@
 
       </div>
       <!-- End of Main Content -->
+
+
+
+
+<!-- Modal Excluir-->
+<div class="modal fade" id="modalExemplo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Excluir Registro</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Tem certeza que deseja excluir o Contato X?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        <button type="button" class="btn btn-danger">Excluir</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 {% endblock %}
 
